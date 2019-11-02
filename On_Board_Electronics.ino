@@ -2,9 +2,9 @@
 #include <Servo.h>
 #include <LoRa.h>
 
-//Assign pin to servo.
+//Assign pin to servo and actuator
+int actuator = 8;
 int servo = 9;
-int actuator = 10;
 
 //Initialize angle value to be sent to Arduino pn the drone as 0 degrees.
 int angle = 0;
@@ -12,9 +12,9 @@ int angle = 0;
 //Intialize final linear actuator angle to be 180 degrees. 
 int final_angle = 180;
 
-//Create servo object. 
-Servo myServo;
+//Create servo objects.
 Servo myActuator;
+Servo myServo;
 
 void setup() {
   myServo.attach(servo);
@@ -22,6 +22,7 @@ void setup() {
 }
 
 void loop() {
+  //Read packets.  
   int packetSize = LoRa.parsePacket();
   int readSignal = LoRa.read();
   

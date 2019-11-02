@@ -52,6 +52,7 @@ void loop() {
   } 
 }
 
+//Sends an integer as a signal.
 void signalPacket(int i) {
   LoRa.beginPacket();
   LoRa.write(i);
